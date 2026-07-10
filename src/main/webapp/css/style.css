@@ -1,0 +1,323 @@
+/* style.css - Premium Cinematic Dark Luxury Theme Styles */
+
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Poppins:wght@300;400;500;600;700;800&display=swap');
+
+:root {
+    --color-bg-base: #030306;
+    --color-bg-surface: #07070d;
+    --color-gold: #D4AF37;
+    /* Metallic Gold */
+    --color-gold-light: #F3E5AB;
+    /* Soft Gold */
+    --color-gold-hover: #E5C158;
+    /* Bright Metallic Gold */
+    --color-gold-glow: rgba(212, 175, 55, 0.35);
+    --color-red: #EF4444;
+    --color-red-glow: rgba(239, 68, 68, 0.25);
+    --color-text-primary: #F9FAFB;
+    --color-text-secondary: #D1D5DB;
+    --color-text-muted: #9CA3AF;
+    --border-glass: rgba(255, 255, 255, 0.05);
+}
+
+body {
+    font-family: 'Outfit', 'Poppins', sans-serif;
+    background-color: var(--color-bg-base);
+    color: var(--color-text-primary);
+    overflow-x: hidden;
+    scroll-behavior: smooth;
+    background-image:
+        radial-gradient(circle at 10% 20%, rgba(212, 175, 55, 0.03) 0%, transparent 40%),
+        radial-gradient(circle at 90% 80%, rgba(212, 175, 55, 0.02) 0%, transparent 45%);
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+}
+
+::-webkit-scrollbar-track {
+    background: #06060c;
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--color-gold);
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--color-gold-hover);
+}
+
+/* Custom Glassmorphism */
+.glass-panel {
+    background: rgba(11, 11, 20, 0.65);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.glass-card {
+    background: rgba(15, 15, 25, 0.55);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.glass-card:hover {
+    border-color: rgba(212, 175, 55, 0.35);
+    box-shadow:
+        0 15px 35px rgba(0, 0, 0, 0.8),
+        0 0 25px rgba(212, 175, 55, 0.08);
+    transform: translateY(-5px);
+}
+
+/* Screen Curve Effect */
+.screen-curve {
+    width: 85%;
+    height: 12px;
+    background: linear-gradient(90deg, transparent, var(--color-gold), transparent);
+    border-radius: 50%;
+    box-shadow: 0 6px 30px var(--color-gold-glow);
+    filter: blur(0.5px);
+}
+
+/* Interactive Seat map details */
+.seat-grid-container {
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+    align-items: center;
+}
+
+.seat-row {
+    display: flex;
+    align-items: center;
+    gap: 0.7rem;
+}
+
+.seat-item {
+    width: 36px;
+    height: 34px;
+    border-radius: 8px 8px 3px 3px;
+    transition: all 0.25s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.7rem;
+    font-weight: 800;
+    user-select: none;
+    cursor: pointer;
+}
+
+.seat-item.booked {
+    background: repeating-linear-gradient(45deg,
+            rgba(239, 68, 68, 0.1),
+            rgba(239, 68, 68, 0.1) 4px,
+            rgba(239, 68, 68, 0.2) 4px,
+            rgba(239, 68, 68, 0.2) 8px);
+    border: 1px solid rgba(239, 68, 68, 0.35);
+    color: rgba(239, 68, 68, 0.45);
+    cursor: not-allowed;
+}
+
+.seat-item:not(.booked):hover {
+    transform: scale(1.12);
+}
+
+/* Animations */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(15px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.animate-fade-in {
+    animation: fadeIn 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* Glowing text classes */
+.text-glow-gold {
+    text-shadow: 0 0 15px rgba(212, 175, 55, 0.45);
+}
+
+.text-glow-emerald {
+    text-shadow: 0 0 15px rgba(16, 185, 129, 0.45);
+}
+
+/* Glowing buttons & active components */
+.btn-gold-glow {
+    background: linear-gradient(135deg, var(--color-gold) 0%, #B8860B 100%);
+    box-shadow: 0 4px 20px rgba(212, 175, 55, 0.25);
+    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.btn-gold-glow:hover {
+    box-shadow: 0 8px 30px rgba(212, 175, 55, 0.45);
+    transform: translateY(-2px);
+    background: linear-gradient(135deg, var(--color-gold-hover) 0%, #CD9A1D 100%);
+}
+
+.btn-gold-glow:active {
+    transform: translateY(0);
+}
+
+/* Pulse Glow Keyframes */
+@keyframes pulseGlow {
+
+    0%,
+    100% {
+        box-shadow: 0 0 15px rgba(212, 175, 55, 0.25);
+        border-color: rgba(212, 175, 55, 0.2);
+    }
+
+    50% {
+        box-shadow: 0 0 25px rgba(212, 175, 55, 0.55);
+        border-color: rgba(212, 175, 55, 0.6);
+    }
+}
+
+.animate-pulse-glow {
+    animation: pulseGlow 2.5s infinite ease-in-out;
+}
+
+/* Ticket Design Details */
+.ticket-container {
+    filter: drop-shadow(0 25px 50px rgba(0, 0, 0, 0.7));
+}
+
+.ticket-notch-left,
+.ticket-notch-right {
+    position: absolute;
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    background-color: var(--color-bg-base);
+    z-index: 10;
+}
+
+.ticket-notch-left {
+    left: -14px;
+    box-shadow: inset -3px 0 5px rgba(0, 0, 0, 0.5);
+}
+
+.ticket-notch-right {
+    right: -14px;
+    box-shadow: inset 3px 0 5px rgba(0, 0, 0, 0.5);
+}
+
+.ticket-divider {
+    border-top: 2px dashed rgba(255, 255, 255, 0.08);
+    position: relative;
+}
+
+.ticket-divider::before,
+.ticket-divider::after {
+    content: '';
+    position: absolute;
+    top: -14px;
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    background-color: var(--color-bg-base);
+    z-index: 10;
+}
+
+.ticket-divider::before {
+    left: -14px;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    clip-path: circle(50% at 0% 50%);
+}
+
+.ticket-divider::after {
+    right: -14px;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    clip-path: circle(50% at 100% 50%);
+}
+
+/* ────────────────────────────────────────────────────────────── */
+/* ── Premium UI Polish Additions ─────────────────────────────── */
+/* ────────────────────────────────────────────────────────────── */
+
+/* Movie & Catalog Cards Hover Effects */
+.movie-card,
+.catalog-card {
+    transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1) !important;
+    position: relative;
+    overflow: hidden;
+}
+
+.movie-card:hover,
+.catalog-card:hover {
+    transform: translateY(-8px) scale(1.03) !important;
+    border-color: rgba(212, 175, 55, 0.5) !important;
+    box-shadow:
+        0 20px 45px rgba(0, 0, 0, 0.95),
+        0 0 35px rgba(212, 175, 55, 0.12) !important;
+}
+
+/* Poster zoom on card hover */
+.movie-card img,
+.catalog-card img {
+    transition: transform 0.9s cubic-bezier(0.16, 1, 0.3, 1) !important;
+}
+
+.movie-card:hover img,
+.catalog-card:hover img {
+    transform: scale(1.06) !important;
+}
+
+/* Luxury button transitions and active highlights */
+.btn-gold-glow {
+    position: relative;
+    overflow: hidden;
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1) !important;
+}
+
+.btn-gold-glow:hover {
+    box-shadow: 0 10px 25px rgba(212, 175, 55, 0.4) !important;
+    transform: translateY(-2.5px) scale(1.025) !important;
+}
+
+.btn-gold-glow:active {
+    transform: translateY(-0.5px) scale(0.985) !important;
+}
+
+/* Shine Sweep effect for prime buttons (Apple / Stripe style) */
+.btn-gold-glow::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -60%;
+    width: 30%;
+    height: 100%;
+    background: linear-gradient(to right,
+            rgba(255, 255, 255, 0) 0%,
+            rgba(255, 255, 255, 0.35) 50%,
+            rgba(255, 255, 255, 0) 100%);
+    transform: skewX(-25deg);
+    transition: left 0.75s ease;
+}
+
+.btn-gold-glow:hover::after {
+    left: 125%;
+}
+
+/* Smooth Scrolling context */
+html {
+    scroll-behavior: smooth;
+}
+
+/* Micro interaction transitions */
+a,
+button {
+    transition: all 0.25s ease-in-out;
+}

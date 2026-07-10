@@ -1,0 +1,226 @@
+/* welcome.css — MovieTix Premium Cinematic Splash Animation */
+
+#movietix-welcome-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: #000000;
+    z-index: 999999;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    pointer-events: auto;
+    transition: opacity 1s cubic-bezier(0.16, 1, 0.3, 1), transform 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+    font-family: 'Outfit', 'Poppins', sans-serif;
+    color: #ffffff;
+}
+
+#movietix-welcome-overlay.fade-out {
+    opacity: 0;
+    transform: scale(1.08);
+    pointer-events: none;
+}
+
+/* Background Particle Canvas */
+.welcome-canvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    pointer-events: none;
+}
+
+/* Ambient Radial Golden Flash - simulating projector light sweep */
+.ambient-glow {
+    position: absolute;
+    width: 15rem;
+    height: 15rem;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(212, 175, 55, 0.12) 0%, rgba(212, 175, 55, 0.03) 50%, rgba(0, 0, 0, 0) 100%);
+    filter: blur(40px);
+    z-index: 2;
+    pointer-events: none;
+    transform: translate(-50%, -50%);
+    top: 50%;
+    left: 50%;
+    animation: goldSweep 4.5s ease-in-out infinite alternate;
+}
+
+@keyframes goldSweep {
+    0% {
+        top: 20%;
+        left: 20%;
+        width: 15rem;
+        height: 15rem;
+        opacity: 0.3;
+    }
+
+    50% {
+        top: 70%;
+        left: 80%;
+        width: 25rem;
+        height: 25rem;
+        opacity: 0.9;
+    }
+
+    100% {
+        top: 50%;
+        left: 50%;
+        width: 20rem;
+        height: 20rem;
+        opacity: 0.5;
+    }
+}
+
+/* Content wrapper */
+.welcome-content {
+    position: relative;
+    z-index: 3;
+    text-align: center;
+}
+
+/* Luxury brand letters mapping */
+.logo-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 4px;
+    margin-bottom: 24px;
+}
+
+.logo-letter {
+    font-size: 5rem;
+    font-weight: 900;
+    text-transform: uppercase;
+    display: inline-block;
+    opacity: 0;
+    transform: translateY(40px) scale(0.9);
+    filter: blur(5px);
+    background: linear-gradient(135deg, #ffffff 0%, #dcdcdc 50%, #ffffff 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: revealLetter 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.logo-letter.gold-brand {
+    background: linear-gradient(135deg, #D4AF37 0%, #F5E093 50%, #B8860B 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-shadow: 0 0 35px rgba(212, 175, 55, 0.15);
+}
+
+@keyframes revealLetter {
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+        filter: blur(0);
+    }
+}
+
+/* Letter timing delays */
+.logo-letter:nth-child(1) {
+    animation-delay: 0.15s;
+}
+
+.logo-letter:nth-child(2) {
+    animation-delay: 0.25s;
+}
+
+.logo-letter:nth-child(3) {
+    animation-delay: 0.35s;
+}
+
+.logo-letter:nth-child(4) {
+    animation-delay: 0.45s;
+}
+
+.logo-letter:nth-child(5) {
+    animation-delay: 0.55s;
+}
+
+.logo-letter:nth-child(6) {
+    animation-delay: 0.65s;
+}
+
+.logo-letter:nth-child(7) {
+    animation-delay: 0.75s;
+}
+
+.logo-letter:nth-child(8) {
+    animation-delay: 0.85s;
+}
+
+/* Metallic shine sweep across complete text on logo wrapper */
+.shine-overlay {
+    position: relative;
+    overflow: hidden;
+}
+
+.shine-overlay::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -150%;
+    width: 50%;
+    height: 100%;
+    background: linear-gradient(to right,
+            rgba(255, 255, 255, 0) 0%,
+            rgba(255, 255, 255, 0.03) 30%,
+            rgba(212, 175, 55, 0.4) 50%,
+            rgba(255, 255, 255, 0.03) 70%,
+            rgba(255, 255, 255, 0) 100%);
+    transform: skewX(-25deg);
+    animation: shineSweep 1.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    animation-delay: 1.4s;
+}
+
+@keyframes shineSweep {
+    0% {
+        left: -150%;
+    }
+
+    100% {
+        left: 200%;
+    }
+}
+
+/* Subtitle under logo */
+.welcome-subtitle {
+    font-size: 1rem;
+    font-weight: 300;
+    letter-spacing: 0.35em;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.7);
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeSubtitle 1.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    animation-delay: 1.2s;
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
+}
+
+@keyframes fadeSubtitle {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Typography styles on tablet/mobile */
+@media (max-width: 768px) {
+    .logo-letter {
+        font-size: 3.5rem;
+    }
+
+    .welcome-subtitle {
+        font-size: 0.75rem;
+        letter-spacing: 0.2em;
+    }
+}

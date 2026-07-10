@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns="https://jakarta.ee/xml/ns/jakartaee"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="https://jakarta.ee/xml/ns/jakartaee
+                             https://jakarta.ee/xml/ns/jakartaee/web-app_6_0.xsd"
+         version="6.0">
+
+    <display-name>OnlineMovieTicketBookingSystem</display-name>
+
+    <welcome-file-list>
+        <welcome-file>index.jsp</welcome-file>
+    </welcome-file-list>
+
+    <context-param>
+        <param-name>TMDB_API_TOKEN</param-name>
+        <param-value>YOUR_TMDB_API_KEY_HERE</param-value>
+    </context-param>
+
+    <filter>
+        <filter-name>RegionalSpotlightFilter</filter-name>
+        <filter-class>com.movietix.servlet.RegionalSpotlightFetcher</filter-class>
+    </filter>
+    
+    <filter-mapping>
+        <filter-name>RegionalSpotlightFilter</filter-name>
+        <url-pattern>/home</url-pattern>
+    </filter-mapping>
+    <filter-mapping>
+        <filter-name>RegionalSpotlightFilter</filter-name>
+        <url-pattern>/index.jsp</url-pattern>
+    </filter-mapping>
+
+    <!-- ===== Servlet Declarations ===== -->
+    <servlet>
+        <servlet-name>LoginServlet</servlet-name>
+        <servlet-class>com.movietix.servlet.LoginServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>RegisterServlet</servlet-name>
+        <servlet-class>com.movietix.servlet.RegisterServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>LogoutServlet</servlet-name>
+        <servlet-class>com.movietix.servlet.LogoutServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>HomeServlet</servlet-name>
+        <servlet-class>com.movietix.servlet.HomeServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>MovieDetailServlet</servlet-name>
+        <servlet-class>com.movietix.servlet.MovieDetailServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>SeatSelectionServlet</servlet-name>
+        <servlet-class>com.movietix.servlet.SeatSelectionServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>BookingServlet</servlet-name>
+        <servlet-class>com.movietix.servlet.BookingServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>PaymentServlet</servlet-name>
+        <servlet-class>com.movietix.servlet.PaymentServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>BookingHistoryServlet</servlet-name>
+        <servlet-class>com.movietix.servlet.BookingHistoryServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>AdminDashboardServlet</servlet-name>
+        <servlet-class>com.movietix.servlet.admin.AdminDashboardServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>AdminMovieServlet</servlet-name>
+        <servlet-class>com.movietix.servlet.admin.AdminMovieServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>AdminBookingServlet</servlet-name>
+        <servlet-class>com.movietix.servlet.admin.AdminBookingServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>AdminShowServlet</servlet-name>
+        <servlet-class>com.movietix.servlet.admin.AdminShowServlet</servlet-class>
+    </servlet>
+
+    <!-- ===== URL Mappings ===== -->
+    <servlet-mapping>
+        <servlet-name>LoginServlet</servlet-name>
+        <url-pattern>/login</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>RegisterServlet</servlet-name>
+        <url-pattern>/register</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>LogoutServlet</servlet-name>
+        <url-pattern>/logout</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>HomeServlet</servlet-name>
+        <url-pattern>/home</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>MovieDetailServlet</servlet-name>
+        <url-pattern>/movie</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>SeatSelectionServlet</servlet-name>
+        <url-pattern>/seats</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>BookingServlet</servlet-name>
+        <url-pattern>/book</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>PaymentServlet</servlet-name>
+        <url-pattern>/payment</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>BookingHistoryServlet</servlet-name>
+        <url-pattern>/history</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AdminDashboardServlet</servlet-name>
+        <url-pattern>/admin/dashboard</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AdminMovieServlet</servlet-name>
+        <url-pattern>/admin/movies</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AdminBookingServlet</servlet-name>
+        <url-pattern>/admin/bookings</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AdminShowServlet</servlet-name>
+        <url-pattern>/admin/shows</url-pattern>
+    </servlet-mapping>
+
+    <!-- ===== Session Config ===== -->
+    <session-config>
+        <session-timeout>30</session-timeout>
+    </session-config>
+
+    
+</web-app>
